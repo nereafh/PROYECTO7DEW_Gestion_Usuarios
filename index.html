@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios y Tareas</title>
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- 
+        TÍTULO PRINCIPAL
+        <h1>Gestión de Usuarios y Tareas</h1>
+        
+         -->
+        
+
+        <div class="seccion">
+           <h2>Registrar Usuario</h2>
+            
+        <form id="formUsuario">
+            <div class="mb-3">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" name="nombre">
+                <p id="errorNombre" class="error"></p> <!-- Mensaje de error nombre -->
+             </div>
+            <div class="mb-3"> 
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="text" class="form-control" id="inputEmail" name="email">
+                <p id="errorEmail" class="error"></p> <!-- Mensaje de error email -->
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnRegistrar">Registrar Usuario</button>
+        </form>
+        </div>
+        
+        <!-- SECCIÓN DONDE SE LISTARÁN LOS USUARIOS -->
+        <div class="seccion">
+            <h2>Usuarios Registrados</h2>
+            <div id="listaUsuarios"></div>
+        </div>
+
+        <!-- SECCIÓN DE TAREAS -->
+        <div class="seccion">
+        <div class="list-group">
+            <h2>Tareas del Usuario Seleccionado</h2>
+
+            <!-- Mostrar usuario activo -->
+            <p id="usuarioActivo">Ningún usuario seleccionado</p>
+
+            <!-- Input para nuevas tareas -->
+            <div class="mb-3"> 
+                <input type="text" class="form-control" id="inputTarea" name="tarea" placeholder="Escribe una tarea">
+            </div>
+
+            <button  type="submit" class="btn btn-primary" id="btnAgregarTarea">Agregar Tarea</button>
+
+            <!-- Lista visual de tareas -->
+            <ul id="listaTareas"></ul>
+        </div>
+        </div>
+    </div>
+
+    <!-- Archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

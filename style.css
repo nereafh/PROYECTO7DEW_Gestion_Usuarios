@@ -1,0 +1,68 @@
+/* ---------- ESTILOS GENERALES ---------- */
+body {
+    margin-right: 50%;
+    background-color: #eef7ff;
+    font-family: Arial, sans-serif;
+    transform: scale(0.9);   /* 90% del tamaño original (más pequeño) */
+    
+}
+
+#app {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ---------- SECCIONES ---------- */
+.seccion {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
+
+/* ---------- FORMULARIO ---------- */
+input {
+    display: block;
+    margin: 5px 0 15px 0;
+    padding: 8px;
+    width: 95%;
+    border: 1px solid gray;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #3085d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d6ab9;
+}
+
+/* ---------- CLASES PARA VALIDACIONES ---------- */
+.valido {
+    border: 2px solid green !important;
+}
+
+.invalido {
+    border: 2px solid red !important;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin:  5px 0 10px 0; /* margen superior positivo */
+}
+.usuario {
+    cursor: pointer; /* Manita al pasar sobre usuarios */
+}
+li {
+    cursor: pointer; /* Manita al pasar sobre tareas */
+}
