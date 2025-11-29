@@ -75,6 +75,14 @@ formUsuario.addEventListener("submit", function (e) {
     }
     */
 
+    // Valido ambos campos antes de crear el usuario
+    const nombreValido = validarCampo(inputNombre, regex.nombre, errorNombre, "Nombre inválido (mínimo 3 letras)");
+    const emailValido = validarCampo(inputEmail, regex.email, errorEmail, "Email inválido");
+
+    if (!nombreValido || !emailValido) {
+        return; // Si hay error, no registrar
+    }
+
 
     // Crear usuario
     let nuevoUsuario = new Usuario(inputNombre.value, inputEmail.value);
@@ -101,12 +109,43 @@ function mostrarUsuarios() {
     listaUsuariosDIV.innerHTML = ""; // limpiar
 
     usuarios.forEach((user, index) => {
-        let div = document.createElement("div");
+        let div = document.createElement("div"); //creo un div por usuario
         div.textContent = `${user.nombre} (${user.email})`;
         div.className = "usuario";
 
         // Evento para seleccionar usuario
         div.addEventListener("click", () => seleccionarUsuario(index));
+
+         // ------------------- BOTÓN ELIMINAR -------------------
+        let btnEliminar = document.createElement("button");
+        btnEliminar.textContent = "Eliminar";
+        btnEliminar.className = "btn btn-danger btn-sm";
+        btnEliminar.style.marginLeft = "10px";
+
+        // Evento click en eliminar
+        btnEliminar.addEventListener("click", (e) => {
+            e.stopPropagation(); // Evita seleccionar usuario al eliminar
+
+            // Mensaje simple de confirmación
+            let seguro = confirm("¿Quieres eliminar al usuario " + user.nombre + "?");
+
+            if (seguro) {
+                // Si confirma, eliminar usuario
+                usuarios.splice(index, 1);
+                guardarEnLocalStorage();
+                mostrarUsuarios();
+
+                // Limpiar selección y tareas si el usuario eliminado era el activo
+                if (usuarioSeleccionado === user) {
+                    usuarioSeleccionado = null;
+                    usuarioActivoP.textContent = "Ningún usuario seleccionado";
+                    listaTareasUL.innerHTML = "";
+                }
+            }
+        });
+
+        // Añado botón al div del usuario
+        div.appendChild(btnEliminar);
 
         listaUsuariosDIV.appendChild(div);
     });
@@ -141,7 +180,8 @@ btnAgregarTarea.addEventListener("click", () => {
 
     inputTarea.value = "";
 
-    guardarEnLocalStorage();
+    guardarEnLocalStorage(); //localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
     mostrarTareas();
 });
 
