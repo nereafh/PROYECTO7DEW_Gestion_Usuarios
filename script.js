@@ -1,3 +1,14 @@
+//localStorage.clear();
+
+/*
+function mostrarResultado(texto){
+    document.getElementById("resultado").innerHTML = texto;
+}
+
+mostrarResultado("Texto a mostrar");
+
+*/
+
 // ARRAY PRINCIPAL DONDE GUARDO LOS USUARIOS
 let usuarios = [];
 
