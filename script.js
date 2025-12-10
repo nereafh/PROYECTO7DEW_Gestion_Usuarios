@@ -51,7 +51,7 @@ function validarCampo(input, patron, errorElemento, mensaje) {
 
 
 
-// EVENTOS DE TECLADO
+// EVENTOS DE TECLADO, llama a la función anterior y le pasa cada parámetro tanto en nombre como en email 
 inputNombre.addEventListener("keyup", () =>
     validarCampo(inputNombre, regex.nombre, errorNombre, "Nombre inválido (mínimo 3 letras)")
 );
@@ -117,7 +117,7 @@ function mostrarUsuarios() {
         div.addEventListener("click", () => seleccionarUsuario(index));
 
          // ------------------- BOTÓN ELIMINAR -------------------
-        let btnEliminar = document.createElement("button");
+        let btnEliminar = document.createElement("button"); //creo un botón eliminar por cada usuario 
         btnEliminar.textContent = "Eliminar";
         btnEliminar.className = "btn btn-danger btn-sm";
         btnEliminar.style.marginLeft = "10px";
@@ -162,17 +162,22 @@ function seleccionarUsuario(index) {
     mostrarTareas();
 }
 
+function mostrarResultado(texto){
+    document.getElementById("resultado").innerHTML = texto;
+}
 
 // AGREGAR UNA TAREA
 btnAgregarTarea.addEventListener("click", () => {
 
     if (!usuarioSeleccionado) {
-        alert("Selecciona un usuario primero");
+        //alert("Selecciona un usuario primero");
+        mostrarResultado("Selecciona un usuario primero");
         return;
     }
 
     if (inputTarea.value.trim() === "") {
-        alert("Escribe una tarea");
+        //alert("Escribe una tarea");
+        mostrarResultado("Escribe una tarea");
         return;
     }
 
